@@ -5,19 +5,20 @@ use PHPMailer\PHPMailer\Exception;
 
 require "../vendor/autoload.php";
 
-$receiving_email_address = "dahmie@gmail.com";
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $mail = new PHPMailer(true);
 
 try {
     // Server settings
     $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
+    $mail->Host = $_ENV['SMTP_HOST'];
     $mail->SMTPAuth = true;
-    $mail->Username = "dahmie@gmail.com";
-    $mail->Password = "yuvo pyiw kahr qhvh";
-    $mail->SMTPSecure = "tls";
-    $mail->Port = 587;
+    $mail->Username = $_ENV['SMTP_USERNAME'];
+    $mail->Password = $_ENV['SMTP_PASSWORD'];
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = $_ENV['SMTP_PORT'];
 
     // Recipients
     $mail->setFrom("dahmie@gmail.com", "Damilola Aderoju");

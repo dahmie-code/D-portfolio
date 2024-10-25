@@ -10,10 +10,10 @@
             let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
 
             // Skip action validation if Netlify attribute is present
-            if (!thisForm.dataset.netlify) {
-                displayError(thisForm, 'The form action property is not set!');
-                return;
-            }
+            // if (!thisForm.dataset.netlify) {
+            //     displayError(thisForm, 'The form action property is not set!');
+            //     return;
+            // }
 
             thisForm.querySelector('.loading').classList.add('d-block');
             thisForm.querySelector('.error-message').classList.remove('d-block');

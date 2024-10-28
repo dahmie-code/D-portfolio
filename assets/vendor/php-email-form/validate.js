@@ -7,11 +7,11 @@
         e.addEventListener('submit', function(event) {
             event.preventDefault();
             let thisForm = this;
-            if (!thisForm.dataset.netlify) {
-                displayError(thisForm, 'The form action property is not set!');
-                return;
-            }
-            
+// Skip action validation if using Netlify
+if (!thisForm.getAttribute('action') && !thisForm.hasAttribute('data-netlify')) {
+    displayError(thisForm, 'The form action property is not set!');
+    return;
+}           
             thisForm.querySelector('.loading').classList.add('d-block');
             thisForm.querySelector('.error-message').classList.remove('d-block');
             thisForm.querySelector('.sent-message').classList.remove('d-block');
